@@ -1,0 +1,32 @@
+{% extends 'attendees/base.html' %}
+
+{% block content %}
+<h2 class="mb-4 text-center">Participants List</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Session</th>
+            <th>Dietary Preference</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for participant in participants %}
+        <tr>
+            <td>{{ participant.name }}</td>
+            <td>{{ participant.email }}</td>
+            <td>{{ participant.phone }}</td>
+            <td>{{ participant.get_sessions_display }}</td>
+            <td>{{ participant.get_dietary_display }}</td>
+            <td>
+                <a href="{% url 'edit_view' participant.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{% url 'delete_view' participant.pk %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

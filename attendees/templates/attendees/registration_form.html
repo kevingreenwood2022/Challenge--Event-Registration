@@ -1,0 +1,14 @@
+{% extends 'attendees/base.html' %}
+
+{% block content %}
+<div class="card">
+    <h2 class="mb-4 text-center">Event Registration</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="text-center">
+            <button type="submit" class="btn btn-custom">Register</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
